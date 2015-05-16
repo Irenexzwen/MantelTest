@@ -39,7 +39,7 @@
 <h2>
 <a id="usage-example" class="anchor" href="#usage-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage example</h2>
 
-<p>First, let’s import the module:</p>
+<p>First import the module:</p>
 
 <div class="highlight highlight-python"><pre><span class="pl-k">import</span> Mantel</pre></div>
 
@@ -71,6 +71,11 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
 <a id="additional-notes" class="anchor" href="#additional-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional notes</h2>
 
 <p>In the example above, we requested 10,000 permutations (the default). However, for four objects there are only 4! = 24 possible permutations. If the number of requested permutations is greater than the actual number of possible permutations for a given matrix size, then the program ignores your request and just tests the veridical against the possible permutations. This gives a deterministic result and can be forced by setting the <code>perms</code> argument to <code>0</code>. If, however, the number of possible permutations is greater than your request, the program randomly samples the space of possible permutations the requested number of times. This is useful because, in the case of large matrices, it may be intractable to compute all possible permutations. For example, for 13 objects, you’d be looking at multiple days of computation, for 15 objects you’d be looking at multiple years, and 23 objects would take longer than the current age of the universe!</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MantelTest is licensed under the terms of the MIT License.</p>
 
 <h2>
 <a id="references-and-links" class="anchor" href="#references-and-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>References and links</h2>
