@@ -13,7 +13,8 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">MantelTest</h1>
-      <h2 class="project-tagline" id='release-info'>&nbsp;</h2>
+      <h2 class="project-tagline">Python implementation of the Mantel test</h2>
+      <h2 class="release-info" id='release-info'>&nbsp;</h2>
       <a href="https://github.com/jwcarr/MantelTest" class="btn">View on GitHub</a>
       <a href="https://github.com/jwcarr/MantelTest/zipball/master" class="btn" id="zip-ball">Download .zip</a>
     </section>
@@ -98,7 +99,7 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
       $(document).ready(function () {
         $.getJSON("https://api.github.com/repos/jwcarr/MantelTest/releases/latest").done(function (release) {
           var zip_url = "https://github.com/jwcarr/MantelTest/archive/" + release['tag_name'] + ".zip";
-          var release_info = "Current version: " + release['tag_name'] + " (" + release['name'] + ")";
+          var release_info = "Latest release: " + release['tag_name'] + " (" + release['name'] + ")";
           $("#release-info").hide();
           $("#release-info").text(release_info);
           $("#release-info").fadeIn(500);
