@@ -8,22 +8,21 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src='jquery.js'></script>
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">MantelTest</h1>
-      <h2 class="project-tagline">Python implementation of the Mantel test, a significance test of the correlation between two distance matrices</h2>
-      <h2 class="project-tagline">Current version: The project is called {{ site.github.project_title }}</h2>
+      <h2 class="project-tagline" id='release-info'>&nbsp;</h2>
       <a href="https://github.com/jwcarr/MantelTest" class="btn">View on GitHub</a>
-      <a href="https://github.com/jwcarr/MantelTest/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/jwcarr/MantelTest/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/jwcarr/MantelTest/zipball/master" class="btn" id="zip-ball">Download .zip</a>
     </section>
 
     <section class="main-content">
       <h2>
 <a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h2>
 
-<p>This implementation of the Mantel test takes two distance matrices (either redundant matrices or condensed vectors) and returns: the veridical correlation, the empirical p-value, and a standard score (z-score).</p>
+<p>The Mantel test (Mantel, 1967) is a significance test of the correlation between two distance matrices. This Python implementation takes two distance matrices (either redundant matrices or condensed vectors) and returns: the veridical correlation, the empirical p-value, and a standard score (z-score).</p>
 
 <p>Optionally, you can specify the number of permutations to test against (a larger number gives a more reliable p-value and z-score but takes longer to run), which type of correlation coefficient to use (Pearson’s <em>r</em>, Spearman’s <em>ρ</em>, or Kendall’s <em>τ</em>), and which tail to test in the calculation of the empirical p-value.</p>
 
@@ -90,7 +89,18 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
 
     </section>
 
-  
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $.getJSON("https://api.github.com/repos/jwcarr/MantelTest/releases/latest").done(function (release) {
+          var zip_url = "https://github.com/jwcarr/MantelTest/archive/" + release['tag_name'] + ".zip";
+          var release_info = "Current version: " + release['tag_name'] + " (" + release['name'] + ")";
+          $("#release-info").hide();
+          $("#release-info").text(release_info);
+          $("#release-info").fadeIn(500);
+          $("#zip-ball").attr("href", zip_url);
+        });
+      });
+    </script>
+
   </body>
 </html>
-
