@@ -99,11 +99,11 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
       $(document).ready(function () {
         $.getJSON("https://api.github.com/repos/jwcarr/MantelTest/releases/latest").done(function (release) {
           var zip_url = "https://github.com/jwcarr/MantelTest/archive/" + release['tag_name'] + ".zip";
+          $("#zip-ball").attr("href", zip_url);
           var release_info = "Latest release: " + release['tag_name'] + " (" + release['name'] + ")";
           $("#release-info").hide();
           $("#release-info").text(release_info);
           $("#release-info").fadeIn(500);
-          $("#zip-ball").attr("href", zip_url);
         });
       });
     </script>
