@@ -8,14 +8,15 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src='jquery.js'></script>
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">MantelTest</h1>
       <h2 class="project-tagline">Python implementation of the Mantel test</h2>
+      <h2 class="release-info" id='release-info'>&nbsp;</h2>
       <a href="https://github.com/jwcarr/MantelTest" class="btn">View on GitHub</a>
-      <a href="https://github.com/jwcarr/MantelTest/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/jwcarr/MantelTest/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/jwcarr/MantelTest/zipball/master" class="btn" id="zip-ball">Download .zip</a>
     </section>
 
     <section class="main-content">
@@ -112,8 +113,6 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
 
 <p><em>Mantel Test</em> on Wikipedia: <a href="https://en.wikipedia.org/wiki/Mantel_test">https://en.wikipedia.org/wiki/Mantel_test</a></p>
 
-<p>Website for this module: <a href="http://jwcarr.github.io/MantelTest/">http://jwcarr.github.io/MantelTest/</a></p>
-
 <p>A guide to the Mantel test for linguists: <a href="http://www.jonwcarr.net/blog/2014/9/19/a-guide-to-the-mantel-test-for-linguists">http://www.jonwcarr.net/blog/2014/9/19/a-guide-to-the-mantel-test-for-linguists</a></p>
 
       <footer class="site-footer">
@@ -124,7 +123,18 @@ dists2 <span class="pl-k">=</span> [<span class="pl-c1">0.3</span>, <span class=
 
     </section>
 
-  
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $.getJSON("https://api.github.com/repos/jwcarr/MantelTest/releases/latest").done(function (release) {
+          var zip_url = "https://github.com/jwcarr/MantelTest/archive/" + release['tag_name'] + ".zip";
+          $("#zip-ball").attr("href", zip_url);
+          var release_info = "Latest release: " + release['tag_name'] + " (" + release['name'] + ")";
+          $("#release-info").hide();
+          $("#release-info").text(release_info);
+          $("#release-info").fadeIn(500);
+        });
+      });
+    </script>
+
   </body>
 </html>
-
